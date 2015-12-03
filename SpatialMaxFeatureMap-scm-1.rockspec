@@ -1,4 +1,4 @@
-package = "SpatialMaxFeatureMap"
+package = "spatialmaxfeaturemap"
 version = "scm-1"
 
 source = {
@@ -23,11 +23,11 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    SpatialMaxFeatureMap = "SpatialMaxFeatureMap.lua"
+    spatialmaxfeaturemap = "SpatialMaxFeatureMap.lua"
   },
   install = {
     lua = {
-      SpatialMaxFeatureMap = "SpatialMaxFeatureMap.lua"
+      spatialmaxfeaturemap = "SpatialMaxFeatureMap.lua"
     }
   }
 }
