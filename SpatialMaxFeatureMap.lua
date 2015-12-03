@@ -28,6 +28,7 @@ function SpatialMaxFeatureMap:buildInternalModules(input)
          self.modules:add(nn.Max(1))
          self.modules:add(nn.View(c/self.divisor, h, w))
       end
+      if input:type()=='torch.CudaTensor' then self.modules:cuda() end
       self.channel=c 
       self.width=w
       self.height=h
