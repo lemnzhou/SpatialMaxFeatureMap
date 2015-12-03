@@ -10,9 +10,9 @@ end
 function SpatialMaxFeatureMap:buildInternalModules(input)
    local isize=input:size()
    local csize=isize:size()
-   local c,w,h,b
-   if csize==4 then --batch
-      b,c,h,w=true, isize[2], isize[3], isize[4]
+   local b,c,h,w
+   if csize==4 then --batch inputs
+      b,c,h,w=isize[1], isize[2], isize[3], isize[4]
    else
       b,c,h,w=false, isize[1], isize[2], isize[3]
    end
@@ -20,9 +20,9 @@ function SpatialMaxFeatureMap:buildInternalModules(input)
    if not (b==self.batch and c==self.channel and w==self.width and h==self.height) then
       self.modules=nn.Sequential()
       if b then
-         self.modules:add(nn.View(isize[1], self.divisor, c/self.divisor*h*w))
+         self.modules:add(nn.View(b, self.divisor, c/self.divisor*h*w))
          self.modules:add(nn.Max(2))
-         self.modules:add(nn.View(isize[1], c/self.divisor, h, w))
+         self.modules:add(nn.View(b, c/self.divisor, h, w))
       else
          self.modules:add(nn.View(self.divisor, c/self.divisor*h*w))
          self.modules:add(nn.Max(1))
