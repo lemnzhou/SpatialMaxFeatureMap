@@ -14,7 +14,7 @@ Examples:
 ```lua
 
 require"nn" 
-require"SpatialMaxFeatureMap"
+require"spatialmaxfeaturemap"
 
 m=nn.SpatialMaxFeatureMap(2)
 
