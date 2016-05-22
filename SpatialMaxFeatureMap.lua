@@ -53,3 +53,13 @@ end
 function SpatialMaxFeatureMap:__tostring__()
   return string.format('%s (%d)', torch.type(self), self.divisor)
 end
+
+function SpatialMaxFeatureMap:clearState()
+    self.channel=nil
+    self.width=nil
+    self.height=nil
+    self.batch=nil
+    self.module=nil
+    self.gradInput=nil
+    self.output=nil
+end
